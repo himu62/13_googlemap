@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>WA31 課題No.11</title>
+
+	<link rel="stylesheet" href="style.css">
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+</head>
+<body>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="hidden">
+	<defs>
+		<symbol id="icon-lifebuoy" viewBox="0 0 1024 1024">
+		<title>lifebuoy</title>
+		<path class="path1" d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM320 512c0-106.040 85.96-192 192-192s192 85.96 192 192-85.96 192-192 192-192-85.96-192-192zM925.98 683.476v0l-177.42-73.49c12.518-30.184 19.44-63.276 19.44-97.986s-6.922-67.802-19.44-97.986l177.42-73.49c21.908 52.822 34.020 110.73 34.020 171.476s-12.114 118.654-34.020 171.476v0zM683.478 98.020v0 0l-73.49 177.42c-30.184-12.518-63.276-19.44-97.988-19.44s-67.802 6.922-97.986 19.44l-73.49-177.422c52.822-21.904 110.732-34.018 171.476-34.018 60.746 0 118.654 12.114 171.478 34.020zM98.020 340.524l177.422 73.49c-12.518 30.184-19.442 63.276-19.442 97.986s6.922 67.802 19.44 97.986l-177.42 73.49c-21.906-52.822-34.020-110.73-34.020-171.476s12.114-118.654 34.020-171.476zM340.524 925.98l73.49-177.42c30.184 12.518 63.276 19.44 97.986 19.44s67.802-6.922 97.986-19.44l73.49 177.42c-52.822 21.904-110.73 34.020-171.476 34.020-60.744 0-118.654-12.114-171.476-34.020z"></path>
+		</symbol>
+		<symbol id="icon-map2" viewBox="0 0 1024 1024">
+		<title>map2</title>
+		<path class="path1" d="M672 192l-320-128-352 128v768l352-128 320 128 352-128v-768l-352 128zM384 145.73l256 102.4v630.138l-256-102.398v-630.14zM64 236.828l256-93.090v631.8l-256 93.088v-631.798zM960 787.172l-256 93.092v-631.8l256-93.090v631.798z"></path>
+		</symbol>
+		<symbol id="icon-zoom-in" viewBox="0 0 1024 1024">
+		<title>zoom-in</title>
+		<path class="path1" d="M992.262 871.396l-242.552-206.294c-25.074-22.566-51.89-32.926-73.552-31.926 57.256-67.068 91.842-154.078 91.842-249.176 0-212.078-171.922-384-384-384-212.076 0-384 171.922-384 384s171.922 384 384 384c95.098 0 182.108-34.586 249.176-91.844-1 21.662 9.36 48.478 31.926 73.552l206.294 242.552c35.322 39.246 93.022 42.554 128.22 7.356s31.892-92.898-7.354-128.22zM384 640c-141.384 0-256-114.616-256-256s114.616-256 256-256 256 114.616 256 256-114.614 256-256 256zM448 192h-128v128h-128v128h128v128h128v-128h128v-128h-128z"></path>
+		</symbol>
+		<symbol id="icon-zoom-out" viewBox="0 0 1024 1024">
+		<title>zoom-out</title>
+		<path class="path1" d="M992.262 871.396l-242.552-206.294c-25.074-22.566-51.89-32.926-73.552-31.926 57.256-67.068 91.842-154.078 91.842-249.176 0-212.078-171.922-384-384-384-212.076 0-384 171.922-384 384s171.922 384 384 384c95.098 0 182.108-34.586 249.176-91.844-1 21.662 9.36 48.478 31.926 73.552l206.294 242.552c35.322 39.246 93.022 42.554 128.22 7.356s31.892-92.898-7.354-128.22zM384 640c-141.384 0-256-114.616-256-256s114.616-256 256-256 256 114.616 256 256-114.614 256-256 256zM192 320h384v128h-384z"></path>
+		</symbol>
+		<symbol id="icon-equalizer" viewBox="0 0 1024 1024">
+		<title>equalizer</title>
+		<path class="path1" d="M448 128v-16c0-26.4-21.6-48-48-48h-160c-26.4 0-48 21.6-48 48v16h-192v128h192v16c0 26.4 21.6 48 48 48h160c26.4 0 48-21.6 48-48v-16h576v-128h-576zM256 256v-128h128v128h-128zM832 432c0-26.4-21.6-48-48-48h-160c-26.4 0-48 21.6-48 48v16h-576v128h576v16c0 26.4 21.6 48 48 48h160c26.4 0 48-21.6 48-48v-16h192v-128h-192v-16zM640 576v-128h128v128h-128zM448 752c0-26.4-21.6-48-48-48h-160c-26.4 0-48 21.6-48 48v16h-192v128h192v16c0 26.4 21.6 48 48 48h160c26.4 0 48-21.6 48-48v-16h576v-128h-576v-16zM256 896v-128h128v128h-128z"></path>
+		</symbol>
+		<symbol id="icon-earth" viewBox="0 0 1024 1024">
+		<title>earth</title>
+		<path class="path1" d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 960.002c-62.958 0-122.872-13.012-177.23-36.452l233.148-262.29c5.206-5.858 8.082-13.422 8.082-21.26v-96c0-17.674-14.326-32-32-32-112.99 0-232.204-117.462-233.374-118.626-6-6.002-14.14-9.374-22.626-9.374h-128c-17.672 0-32 14.328-32 32v192c0 12.122 6.848 23.202 17.69 28.622l110.31 55.156v187.886c-116.052-80.956-192-215.432-192-367.664 0-68.714 15.49-133.806 43.138-192h116.862c8.488 0 16.626-3.372 22.628-9.372l128-128c6-6.002 9.372-14.14 9.372-22.628v-77.412c40.562-12.074 83.518-18.588 128-18.588 70.406 0 137.004 16.26 196.282 45.2-4.144 3.502-8.176 7.164-12.046 11.036-36.266 36.264-56.236 84.478-56.236 135.764s19.97 99.5 56.236 135.764c36.434 36.432 85.218 56.264 135.634 56.26 3.166 0 6.342-0.080 9.518-0.236 13.814 51.802 38.752 186.656-8.404 372.334-0.444 1.744-0.696 3.488-0.842 5.224-81.324 83.080-194.7 134.656-320.142 134.656z"></path>
+		</symbol>
+	</defs>
+</svg>
+
+	<div id="map"></div>
+
+	<div id="locations">
+		<ul>
+			<li id="loc1">浮間公園</li>
+			<li id="loc2">浮間子どもスポーツ広場</li>
+			<li id="loc3">薬師の泉庭園</li>
+			<li id="loc4">浮間釣り堀公園</li>
+			<li id="loc5">赤塚公園</li>
+		</ul>
+	</div>
+
+	<div id="menu">
+		<button id="btn-zoom-in" class="btn btn-mini" type="button">
+			<svg class="icon">
+				<use xlink:href="#icon-zoom-in" />
+			</svg>
+		</button>
+		<button id="btn-zoom-out" class="btn btn-mini" type="button">
+			<svg class="icon">
+				<use xlink:href="#icon-zoom-out" />
+			</svg>
+		</button>
+		<button id="btn-switch-type" class="btn btn-mini roadmap" type="button">
+			<svg class="icon icon-earth">
+				<use xlink:href="#icon-earth" />
+			</svg>
+			<svg class="icon icon-map2">
+				<use xlink:href="#icon-map2" />
+			</svg>
+		</button>
+		<button id="btn-equalizer" class="btn btn-mini" type="button">
+			<svg class="icon">
+				<use xlink:href="#icon-equalizer" />
+			</svg>
+		</button>
+	</div>
+
+	<button id="btn-menu" class="btn" type="button">
+		<svg class="icon">
+			<use xlink:href="#icon-lifebuoy" />
+		</svg>
+	</button>
+
+	<div id="color-container">
+		<div id="color-dialog">
+			<section>
+				<label>色相</label>
+				<div id="bar-hue"></div>
+				<div id="val-hue" class="val">NULL</div>
+			</section>
+			<section>
+				<label>彩度</label>
+				<div id="bar-sat" class="bar">
+					<div id="point-sat" class="point"></div>
+				</div>
+				<div id="val-sat" class="val">0</div>
+			</section>
+			<section>
+				<label>明度</label>
+				<div id="bar-light" class="bar">
+					<div id="point-light" class="point"></div>
+				</div>
+				<div id="val-light" class="val">0</div>
+			</section>
+			<button id="btn-default" type="button">デフォルト</button>
+		</div>
+	</div>
+
+	<div id="grab-cover"></div>
+
+	<script async src="script.js"></script>
+</body>
+</html>
