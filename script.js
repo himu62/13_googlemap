@@ -179,7 +179,7 @@ function setStyle() {
 }
 
 function setHue(e) {
-	if(e.type == 'mousemove' && e.webkitMovementX < 1) {
+	if(e.type == 'mousemove' && e.webkitMovementX == 0) {
 		return;
 	}
 
